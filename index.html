@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie - Recipe App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1> Foodie</h1>
+    <nav>
+        <button onclick="showHome()">Home</button>
+        <button onclick="showSaved()">Saved Recipes</button>
+        <button onclick="showAddForm()">Add Recipe</button>
+        <button onclick="showLogin()">Login</button>
+        <button onclick="showSignup()">Signup</button>
+        <button onclick="logout()">Logout</button>
+    </nav>
+    <p id="welcome"></p>
+</header>
+
+<!-- Login Form -->
+<section id="loginSection" class="auth">
+    <h2>Login</h2>
+    <form onsubmit="login(event)">
+        <input type="email" id="loginEmail"
+               placeholder="Email" required>
+        <input type="password" id="loginPassword"
+               placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account?
+        <a href="#" onclick="showSignup()">Sign up</a>
+    </p>
+</section>
+
+<!-- Signup Form -->
+<section id="signupSection" class="auth">
+    <h2>Create Account</h2>
+    <form onsubmit="signup(event)">
+        <input type="text" id="signupName"
+               placeholder="Full Name" required>
+        <input type="email" id="signupEmail"
+               placeholder="Email" required>
+        <input type="password" id="signupPassword"
+               placeholder="Password (minimum 6 characters)"
+               minlength="6" required>
+        <button type="submit">Signup</button>
+    </form>
+    <p>Already have an account?
+        <a href="#" onclick="showLogin()">Login</a>
+    </p>
+</section>
+
+<!-- Home / Recipe Section -->
+<main id="homeSection">
+
+    <section class="hero">
+        <h2>Discover Delicious Recipes</h2>
+        <p>Cook, share, and enjoy amazing food!</p>
+    </section>
+
+    <section class="search-section">
+        <input type="text" id="searchInput"
+               placeholder="Search recipes or ingredients..."
+               oninput="displayRecipes()">
+
+        <select id="cuisineFilter" onchange="displayRecipes()">
+            <option value="">All Cuisines</option>
+            <option value="Indian">Indian</option>
+            <option value="Italian">Italian</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Mexican">Mexican</option>
+        </select>
+
+        <select id="dietFilter" onchange="displayRecipes()">
+            <option value="">All Diets</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-Vegetarian">Non-Vegetarian</option>
+        </select>
+    </section>
+
+    <h2 id="recipeHeading">Explore Recipes</h2>
+
+    <section id="recipeContainer" class="recipe-grid">
+        <!-- Recipe cards are added using JavaScript -->
+    </section>
+
+</main>
+
+<!-- Saved Recipes -->
+<main id="savedSection" class="hidden">
+    <h2>My Saved Recipes </h2>
+    <section id="savedContainer" class="recipe-grid"></section>
+</main>
+
+<!-- Add Recipe Form -->
+<section id="addSection" class="auth hidden">
+    <h2>Submit Your Recipe</h2>
+
+    <form onsubmit="addRecipe(event)">
+        <input type="text" id="recipeName"
+               placeholder="Recipe Name" required>
+
+        <input type="text" id="recipeCuisine"
+               placeholder="Cuisine (Indian, Italian, etc.)"
+               required>
+
+        <select id="recipeDiet" required>
+            <option value="">Select Diet</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-Vegetarian">Non-Vegetarian</option>
+        </select>
+
+        <input type="text" id="recipeIngredients"
+               placeholder="Ingredients separated by commas"
+               required>
+
+        <textarea id="recipeInstructions"
+                  placeholder="Step-by-step instructions"
+                  required></textarea>
+
+        <input type="url" id="recipeImage"
+               placeholder="Image URL (optional)">
+
+        <button type="submit">Submit Recipe</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 Foodie Recipe App | Made with </p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
